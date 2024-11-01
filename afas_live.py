@@ -1,4 +1,4 @@
-# GOAL:
+# GOAL: Scrape artist names and their performance dates from https://www.afaslive.nl/agenda
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -23,7 +23,7 @@ df = pd.DataFrame(data)
 df['scrape_date'] = scrape_date
 df['venue'] = 'AFAS Live'
 
-# Write to the database
+# Write to the database if not yet there
 
 
 
