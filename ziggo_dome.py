@@ -1,4 +1,4 @@
-# GOAL: Scrape artist names and their performance dates from https://ziggodome.nl/en/agenda
+# GOAL: Scrape artist names and their concert dates from https://ziggodome.nl/en/agenda
 import requests
 import json
 from datetime import datetime
