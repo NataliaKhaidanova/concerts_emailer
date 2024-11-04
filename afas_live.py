@@ -1,10 +1,10 @@
 # GOAL: Scrape artist names and their concert dates from https://www.afaslive.nl/agenda
-import requests
-from bs4 import BeautifulSoup
-from datetime import datetime
-import pandas as pd
 import json
 from sqlalchemy import create_engine
+from datetime import datetime
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
 
 # INIT --------------------------------------------------------------------------------------------------
 with open('ini.json', 'r') as ini_file:
@@ -21,7 +21,8 @@ engine = create_engine(f'postgresql+psycopg2://{user}:{password}@{host}:{port}/{
 # -------------------------------------------------------------------------------------------------------
 scrape_date = datetime.today()
 
-our_data = pd.read_sql('SELECT * FROM stage.concerts_emailer;', engine)
+query = "SELECT * FROM stage.concerts_emailer WHERE venue = 'AFAS Live';"
+our_data = pd.read_sql(query, engine)
 
 response = requests.get('https://www.afaslive.nl/agenda')
 soup = BeautifulSoup(response.content, features='html.parser')
